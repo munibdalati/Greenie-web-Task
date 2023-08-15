@@ -37,9 +37,24 @@ Important Notes descriping how to enter the application name:
 * Google Chrome, Type: chrome.exe
 * Visual Studio Code, Type: Code.exe
 
-7. After entering Application Name, click the **Calculate** button.
-
 The server will respond with an estimation of the power consumption for the specified application. The response will be displayed on the web page.
 
 **Note:** Calculation process will take 3-5 seconds after pressing the button
+
+
+### index.html:
+* I have included bootstrap link
+* All styling was written by inline CSS and bootstrap
+* The page includes some instructions for how to use the calculator
+* A Javascript code is included at the bottom of the page which fetch the data from the endpoint and display the result in the html page
+
+### server.py:
+* This is the server page build by python.
+* I used psutil library from python, which is python cross-platform library used to access system details and process utilities. It is used to keep track of various resources utilization in the system. Usage of resources like CPU, memory, disks, network, sensors can be monitored.
+* My major use of this library was this function: psutil.cpu_percent(interval)
+* This function calculates the current system-wide CPU utilization as a percentage.It is recommended to provide time interval (seconds) as parameter to the function over which the average CPU usage will be calculated.
+* The Calculation process start by calculate initial power consuming percentage of certain application for 1 sec then stop for 1 second then calculate final power consuming percentage for another 1 second and finally take the average of the 2 percentages.
+
+
+
 
