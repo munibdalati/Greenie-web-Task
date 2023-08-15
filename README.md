@@ -1,6 +1,8 @@
 # Power Consumption Estimation Tool
 This Python project is a simple web server that allows you to estimate the power consumption of a specific application running on your computer based on its CPU usage. The estimation is made by monitoring the average CPU usage of the specified application over a defined duration (1 second for 2 intervals).
 
+This project is build using HTML, CSS, Bootstrap, Javascript, and Python
+
 ## Prerequisites
 Before using this project, ensure that you have the following prerequisites installed on your system:
 
