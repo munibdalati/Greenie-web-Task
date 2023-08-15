@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- calling bootstrap -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+            crossorigin="anonymous" />
+        <title>Power Consumption Calculator</title>
+    </head>
+
+    <body style="background-color:#f0f0f0 ;">
+        <div class="row"
+            style="border: solid 10px; border-radius: 20px; padding: 2%; margin:30px 10%; background-color: #fff;">
+
+            <!-- first column -->
+            <div class="col-sm-5" style="margin-right: 5%;">
+                <h2>Power Consumption Calculator</h2>
+                <h4>How to use the calculator:</h4>
+                <ol>
+                    <li>Open the application you want to calculate its power
+                        comsumption</li>
+                    <li>Open Task manager on your computer (Ctrl+Alt+Delete)</li>
+                    <li>Open Details section</li>
+                    <li>You will see the applications which are working at the
+                        moment in
+                        your computer, Search fot the application you want</li>
+                    <li>Write the application name in the box below as written in
+                        Task manager window</li>
+                </ol>
+                <h4>Examples: </h4>
+                <ul>
+                    <li>Google Chrome, Type: chrome.exe</li>
+                    <li>Visual Studio Code, Type: Code.exe</li>
+                </ul>
+
+                <p><h6>IMPORTANT NOTE:</h6> Ensure that the application is
+                    opened when you want to calculate its power consumption</p>
+
+            </div>
+            <!-- Second column -->
+            <div class="col-sm-6 p-5"
+                style="background-color:#baff66 ; border-radius: 20px;">
+
+                <h2 class="text-center">Calculation Window</h2>
+                <!-- Appliction name input -->
+                <div class>
+                    <label for="exampleFormControlInput1"
+                        class="form-label mt-4" style="font-size: 20px;">Application
+                        name:</label>
+                    <input id="appName" type="text"
+                        class="form-control form-control"
+                        placeholder="Example: chrome.exe">
+                    <!-- Note -->
+                    <p class="mx-1 mt-2">Note: Calculation process will take 3-5
+                        seconds after pressing the button below</p>
+                </div>
+                <!-- Calculate button -->
+                <button id="calculateButton" type="button"
+                    class="btn btn-success mt-3">Calculate</button>
+
+                <!-- Result -->
+                <h3 id="result" class="mt-5"></h3>
+            </div>
+
+        </div>
+
+        <!-- JavaScript code -->
+        <script>
+
+            // Calling event listener for calculate button
+        document.getElementById("calculateButton").addEventListener("click", function () {
+            let selectedApp = document.getElementById("appName").value;
+            let measurementDuration = 1  // Measurement duration in seconds = 1 second
+
+            fetch(`/calculate_power?app=${selectedApp}&duration=${measurementDuration}`)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("result").textContent = data;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+    </script>
+
+    </body>
+
+</html>
